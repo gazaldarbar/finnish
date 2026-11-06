@@ -1,0 +1,7 @@
+{
+  "appId": "app.finnish.writer",
+  "appName": "finnish",
+  "webDir": "www",
+  "backgroundColor": "#101418",
+  "android": { "allowMixedContent": false }
+}

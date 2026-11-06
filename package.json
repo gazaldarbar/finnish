@@ -1,0 +1,35 @@
+{
+  "name": "finnish",
+  "productName": "finnish",
+  "version": "2.0.0",
+  "description": "finnish – offline Malayalam & English screenplay writer. Creator: Nishan",
+  "author": "Nishan",
+  "license": "MIT",
+  "main": "electron/main.js",
+  "scripts": {
+    "fonts": "node scripts/fetch-fonts.mjs",
+    "start": "electron .",
+    "dist:win": "electron-builder --win --publish never"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/filesystem": "^7.0.0",
+    "@capacitor/share": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.0.0",
+    "electron": "^35.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "app.finnish.writer",
+    "productName": "finnish",
+    "copyright": "Creator: Nishan",
+    "files": ["electron/**/*", "www/**/*", "package.json"],
+    "directories": { "output": "dist", "buildResources": "build" },
+    "win": { "icon": "build/icon.ico", "target": [{ "target": "nsis", "arch": ["x64"] }, { "target": "portable", "arch": ["x64"] }], "artifactName": "finnish-${version}-${target}.${ext}" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "perMachine": false, "createDesktopShortcut": true }
+  }
+}
