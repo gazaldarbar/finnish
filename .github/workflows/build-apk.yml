@@ -1,0 +1,39 @@
+name: Build Android APK
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 21 }
+      - name: Install packages
+        run: npm install --no-audit --no-fund
+      - name: Fetch Malayalam fonts (Manjari, Chilanka, Gayathri)
+        run: node scripts/fetch-fonts.mjs
+      - name: Create Android project
+        run: npx cap add android
+      - name: Add print plugin
+        run: bash scripts/patch-android.sh
+      - name: Generate icons and splash
+        run: npx capacitor-assets generate --android
+      - name: Copy web app into Android
+        run: npx cap sync android
+      - name: Build APK
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon
+      - name: Rename APK
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk finnish.apk
+      - uses: actions/upload-artifact@v4
+        with: { name: finnish-apk, path: finnish.apk }
+      - name: Attach to release (tag builds)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with: { files: finnish.apk }
