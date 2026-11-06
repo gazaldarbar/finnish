@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101418">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>finnish – Malayalam screenplay writer</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" id="gfonts" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Chilanka&family=Gayathri:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&family=Noto+Serif+Malayalam:wght@400;700&display=swap">
+</head>
+<body>
+<div id="bg"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
+
+<div id="splash">
+  <div class="sp-glass">
+    <img src="icons/finnish-wordmark.png" alt="finnish" class="sp-logo">
+    <div class="sp-by">by Nishan</div>
+  </div>
+</div>
+
+<main id="home" class="screen" hidden></main>
+<main id="wiz" class="screen" hidden></main>
+<div id="app" class="screen" hidden>
+  <header id="top" class="glass"></header>
+  <div id="ribbon" class="glass"></div>
+  <div id="work">
+    <div id="scroll"><div id="sheet"><div id="cover"></div><div id="page"></div></div></div>
+    <aside id="side" class="glass" hidden></aside>
+  </div>
+  <footer id="acc" class="glass"></footer>
+</div>
+
+<div id="layer"></div>
+<div id="toast" class="glass" role="status"></div>
+<input type="file" id="fileIn" hidden accept=".fdx,.screenplay,.fountain,.txt,.finnish,.json,.pdf,application/json,text/plain,text/xml,application/xml">
+
+<script src="translit.js"></script>
+<script src="import.js"></script>
+<script src="export.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
