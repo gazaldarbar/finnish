@@ -27,9 +27,42 @@
     "appId": "app.finnish.writer",
     "productName": "finnish",
     "copyright": "Creator: Nishan",
-    "files": ["electron/**/*", "www/**/*", "package.json"],
-    "directories": { "output": "dist", "buildResources": "build" },
-    "win": { "icon": "build/icon.ico", "target": [{ "target": "nsis", "arch": ["x64"] }, { "target": "portable", "arch": ["x64"] }], "artifactName": "finnish-${version}-${target}.${ext}" },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "perMachine": false, "createDesktopShortcut": true }
-  }
+    "files": [
+      "electron/**/*",
+      "www/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "artifactName": "finnish-${version}-setup.${ext}"
+    },
+    "portable": {
+      "artifactName": "finnish-${version}-portable.${ext}"
+    }
+  },
+  "homepage": "https://github.com/gazaldarbar/finnish"
 }
